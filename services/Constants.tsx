@@ -548,3 +548,331 @@ export const allProjects: Project[] = [
     category: "Web Application"
   }
 ];
+
+
+
+
+//Blogs page 
+// Types
+export interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  category: string;
+  date: string;
+  readTime: string;
+  featured?: boolean;
+}
+
+// Dummy Blog Data - 30 Posts
+export const blogPosts: BlogPost[] = [
+  {
+    id: 1,
+    title: "The Impact of Technology on the Workplace: How Technology is Changing",
+    excerpt: "Explore how modern technology is revolutionizing the way we work and collaborate in today's digital age.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "August 20, 2022",
+    readTime: "5 min read",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "The Future of AI in Business: Transforming Industries",
+    excerpt: "Discover how artificial intelligence is reshaping business operations and creating new opportunities.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "August 18, 2022",
+    readTime: "7 min read",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Cloud Computing: The Backbone of Modern Business",
+    excerpt: "Learn why cloud infrastructure is essential for scaling your business in the digital era.",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "August 15, 2022",
+    readTime: "6 min read",
+    featured: true
+  },
+  {
+    id: 4,
+    title: "Cybersecurity Best Practices for Remote Teams",
+    excerpt: "Essential security measures every remote team should implement to protect their data.",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=600&fit=crop",
+    author: { name: "Ernie Smith", avatar: "https://i.pravatar.cc/100?img=13" },
+    category: "Technology",
+    date: "August 12, 2022",
+    readTime: "8 min read",
+    featured: true
+  },
+  {
+    id: 5,
+    title: "The Rise of Progressive Web Applications",
+    excerpt: "Understanding PWAs and why they're becoming the future of web development.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "August 10, 2022",
+    readTime: "5 min read"
+  },
+  {
+    id: 6,
+    title: "Blockchain Technology Beyond Cryptocurrency",
+    excerpt: "Exploring the diverse applications of blockchain in various industries.",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop",
+    author: { name: "Eric Smith", avatar: "https://i.pravatar.cc/100?img=14" },
+    category: "Technology",
+    date: "August 8, 2022",
+    readTime: "6 min read"
+  },
+  {
+    id: 7,
+    title: "Building Scalable Microservices Architecture",
+    excerpt: "Best practices for designing and implementing microservices at scale.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "August 5, 2022",
+    readTime: "9 min read"
+  },
+  {
+    id: 8,
+    title: "The DevOps Revolution: Streamlining Development",
+    excerpt: "How DevOps practices are transforming software development and deployment.",
+    image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "August 3, 2022",
+    readTime: "7 min read"
+  },
+  {
+    id: 9,
+    title: "Mobile-First Design: Why It Matters in 2024",
+    excerpt: "The importance of prioritizing mobile users in modern web design.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "July 30, 2022",
+    readTime: "5 min read"
+  },
+  {
+    id: 10,
+    title: "Data Analytics: Turning Information into Insights",
+    excerpt: "Leveraging data analytics to make informed business decisions.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    author: { name: "Ernie Smith", avatar: "https://i.pravatar.cc/100?img=13" },
+    category: "Technology",
+    date: "July 28, 2022",
+    readTime: "6 min read"
+  },
+  {
+    id: 11,
+    title: "The Power of Serverless Architecture",
+    excerpt: "Understanding the benefits and use cases of serverless computing.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "July 25, 2022",
+    readTime: "7 min read"
+  },
+  {
+    id: 12,
+    title: "5G Technology and Its Impact on IoT",
+    excerpt: "How 5G networks are enabling the next generation of IoT devices.",
+    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "July 22, 2022",
+    readTime: "8 min read"
+  },
+  {
+    id: 13,
+    title: "Agile Methodology: A Comprehensive Guide",
+    excerpt: "Master the principles and practices of Agile project management.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "July 20, 2022",
+    readTime: "10 min read"
+  },
+  {
+    id: 14,
+    title: "Machine Learning for Beginners",
+    excerpt: "A beginner-friendly introduction to machine learning concepts and applications.",
+    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=600&fit=crop",
+    author: { name: "Eric Smith", avatar: "https://i.pravatar.cc/100?img=14" },
+    category: "Technology",
+    date: "July 18, 2022",
+    readTime: "12 min read"
+  },
+  {
+    id: 15,
+    title: "The Evolution of E-Commerce Platforms",
+    excerpt: "How e-commerce technology has evolved to meet modern consumer demands.",
+    image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "July 15, 2022",
+    readTime: "6 min read"
+  },
+  {
+    id: 16,
+    title: "Virtual Reality in Enterprise Training",
+    excerpt: "Exploring how VR technology is revolutionizing corporate training programs.",
+    image: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "July 12, 2022",
+    readTime: "7 min read"
+  },
+  {
+    id: 17,
+    title: "API Design Best Practices",
+    excerpt: "Essential guidelines for creating robust and developer-friendly APIs.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "July 10, 2022",
+    readTime: "8 min read"
+  },
+  {
+    id: 18,
+    title: "The Green IT Revolution",
+    excerpt: "Sustainable technology practices for environmentally conscious businesses.",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
+    author: { name: "Ernie Smith", avatar: "https://i.pravatar.cc/100?img=13" },
+    category: "Technology",
+    date: "July 8, 2022",
+    readTime: "6 min read"
+  },
+  {
+    id: 19,
+    title: "Quantum Computing: The Next Frontier",
+    excerpt: "Understanding the potential and challenges of quantum computing technology.",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "July 5, 2022",
+    readTime: "9 min read"
+  },
+  {
+    id: 20,
+    title: "Low-Code Development Platforms",
+    excerpt: "How low-code tools are democratizing application development.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "July 3, 2022",
+    readTime: "5 min read"
+  },
+  {
+    id: 21,
+    title: "The Rise of Edge Computing",
+    excerpt: "Why edge computing is becoming essential for real-time data processing.",
+    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "June 30, 2022",
+    readTime: "7 min read"
+  },
+  {
+    id: 22,
+    title: "Digital Transformation Strategies",
+    excerpt: "A roadmap for successful digital transformation in your organization.",
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop",
+    author: { name: "Eric Smith", avatar: "https://i.pravatar.cc/100?img=14" },
+    category: "Technology",
+    date: "June 28, 2022",
+    readTime: "11 min read"
+  },
+  {
+    id: 23,
+    title: "Container Orchestration with Kubernetes",
+    excerpt: "Mastering Kubernetes for efficient container management at scale.",
+    image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "June 25, 2022",
+    readTime: "10 min read"
+  },
+  {
+    id: 24,
+    title: "The Future of Work: Hybrid Models",
+    excerpt: "Adapting technology infrastructure for the hybrid workplace.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "June 22, 2022",
+    readTime: "6 min read"
+  },
+  {
+    id: 25,
+    title: "GraphQL vs REST: Choosing the Right API",
+    excerpt: "Comparing GraphQL and REST to determine the best fit for your project.",
+    image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "June 20, 2022",
+    readTime: "8 min read"
+  },
+  {
+    id: 26,
+    title: "Automated Testing Best Practices",
+    excerpt: "Building a robust automated testing strategy for quality assurance.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
+    author: { name: "Ernie Smith", avatar: "https://i.pravatar.cc/100?img=13" },
+    category: "Technology",
+    date: "June 18, 2022",
+    readTime: "9 min read"
+  },
+  {
+    id: 27,
+    title: "The Impact of 3D Printing Technology",
+    excerpt: "How 3D printing is revolutionizing manufacturing and prototyping.",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
+    author: { name: "Tracey Wilson", avatar: "https://i.pravatar.cc/100?img=5" },
+    category: "Technology",
+    date: "June 15, 2022",
+    readTime: "7 min read"
+  },
+  {
+    id: 28,
+    title: "Natural Language Processing Applications",
+    excerpt: "Exploring real-world applications of NLP in modern software.",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=600&fit=crop",
+    author: { name: "Elizabeth Slavin", avatar: "https://i.pravatar.cc/100?img=9" },
+    category: "Technology",
+    date: "June 12, 2022",
+    readTime: "8 min read"
+  },
+  {
+    id: 29,
+    title: "Building Real-Time Applications",
+    excerpt: "Technologies and patterns for creating responsive real-time apps.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    author: { name: "Jason Francisco", avatar: "https://i.pravatar.cc/100?img=12" },
+    category: "Technology",
+    date: "June 10, 2022",
+    readTime: "10 min read"
+  },
+  {
+    id: 30,
+    title: "The Role of Big Data in Decision Making",
+    excerpt: "Leveraging big data analytics for strategic business decisions.",
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop",
+    author: { name: "Eric Smith", avatar: "https://i.pravatar.cc/100?img=14" },
+    category: "Technology",
+    date: "June 8, 2022",
+    readTime: "11 min read"
+  }
+];
