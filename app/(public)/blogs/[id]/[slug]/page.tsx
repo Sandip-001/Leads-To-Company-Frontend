@@ -5,6 +5,16 @@ import { blogPosts } from "@/services/Constants";
 import { Metadata } from "next";
 import { slugify } from "@/lib/slugify";
 import { notFound } from "next/navigation";
+import { Filter } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export interface BlogDetailData {
   content: string;
@@ -81,9 +91,35 @@ const BlogDetailsPage = async ({ params }: Props) => {
     <>
       <div className="min-h-screen bg-white pt-24 pb-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile Filter Button - Only visible on small/medium screens */}
+          <div className="lg:hidden mb-6">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="w-full sm:w-auto gap-2 shadow-md hover:shadow-lg transition-all"
+                >
+                  <Filter size={20} />
+                  Filter & Search Blogs
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px] overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle>Filter Blogs</SheetTitle>
+                  <SheetDescription>
+                    Search and filter blogs by category
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="mt-6">
+                  <Sidebar />
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+
           <div className="grid lg:grid-cols-12 gap-8">
-            {/* Sidebar - Left */}
-            <aside className="lg:col-span-3 lg:sticky lg:top-24 lg:self-start">
+            {/* Sidebar - Left - Only visible on large screens */}
+            <aside className="hidden lg:block lg:col-span-3 lg:sticky lg:top-24 lg:self-start">
               <Sidebar />
             </aside>
 
@@ -99,3 +135,5 @@ const BlogDetailsPage = async ({ params }: Props) => {
 };
 
 export default BlogDetailsPage;
+
+

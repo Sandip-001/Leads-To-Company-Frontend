@@ -1,14 +1,8 @@
-import { Award, Zap, Heart, Shield } from 'lucide-react';
+import { Award, Zap, Heart, Shield, Users, TrendingUp, Target, Code, Rocket, Star } from 'lucide-react';
 
 
 //Home page 
 // Types
-export interface Service {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-}
 
 export interface TechSkill {
   id: number;
@@ -72,42 +66,156 @@ export const techSkills: TechSkill[] = [
   { id: 10, name: "GraphQL", logo: "◈" }
 ];
 
+// Types
+export interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  features?: string[];
+}
+
+// Extended Services Data - 20 Services
 export const services: Service[] = [
   {
     id: 1,
     title: "Web Development",
     description: "Custom web applications built with modern frameworks and best practices for optimal performance",
-    icon: "💻"
+    icon: "💻",
+    features: ["React & Next.js", "Responsive Design", "Performance Optimization"]
   },
   {
     id: 2,
     title: "Mobile App Development",
     description: "Native and cross-platform mobile solutions that deliver exceptional user experiences",
-    icon: "📱"
+    icon: "📱",
+    features: ["iOS & Android", "React Native", "Flutter Development"]
   },
   {
     id: 3,
     title: "Cloud Services",
     description: "Scalable cloud infrastructure and migration services for modern businesses",
-    icon: "☁️"
+    icon: "☁️",
+    features: ["AWS & Azure", "Cloud Migration", "Infrastructure Management"]
   },
   {
     id: 4,
     title: "AI & Machine Learning",
     description: "Intelligent automation and data-driven insights powered by advanced AI technologies",
-    icon: "🤖"
+    icon: "🤖",
+    features: ["Deep Learning", "Predictive Analytics", "Natural Language Processing"]
   },
   {
     id: 5,
     title: "DevOps Solutions",
     description: "Streamlined development pipelines and automated deployment for faster delivery",
-    icon: "⚙️"
+    icon: "⚙️",
+    features: ["CI/CD Pipelines", "Docker & Kubernetes", "Automation"]
   },
   {
     id: 6,
     title: "IT Consulting",
     description: "Strategic technology guidance to help your business stay ahead of the competition",
-    icon: "📊"
+    icon: "📊",
+    features: ["Digital Strategy", "Tech Roadmap", "Business Analysis"]
+  },
+  {
+    id: 7,
+    title: "UI/UX Design",
+    description: "Beautiful, intuitive interfaces that provide seamless user experiences across all devices",
+    icon: "🎨",
+    features: ["User Research", "Wireframing", "Prototyping"]
+  },
+  {
+    id: 8,
+    title: "E-Commerce Solutions",
+    description: "Comprehensive e-commerce platforms with secure payment integration and inventory management",
+    icon: "🛒",
+    features: ["Shopping Cart", "Payment Gateway", "Order Management"]
+  },
+  {
+    id: 9,
+    title: "Cybersecurity",
+    description: "Protect your business with advanced security measures and compliance solutions",
+    icon: "🔒",
+    features: ["Threat Detection", "Security Audits", "Data Protection"]
+  },
+  {
+    id: 10,
+    title: "Data Analytics",
+    description: "Transform raw data into actionable insights with powerful analytics and visualization",
+    icon: "📈",
+    features: ["Business Intelligence", "Data Visualization", "Reporting"]
+  },
+  {
+    id: 11,
+    title: "Blockchain Development",
+    description: "Decentralized solutions and smart contracts for secure, transparent transactions",
+    icon: "⛓️",
+    features: ["Smart Contracts", "DApps", "Cryptocurrency Integration"]
+  },
+  {
+    id: 12,
+    title: "IoT Solutions",
+    description: "Connect devices and systems to create intelligent, automated environments",
+    icon: "🌐",
+    features: ["Device Integration", "Real-time Monitoring", "Automation"]
+  },
+  {
+    id: 13,
+    title: "Quality Assurance",
+    description: "Comprehensive testing services to ensure your software is bug-free and reliable",
+    icon: "✅",
+    features: ["Automated Testing", "Manual Testing", "Performance Testing"]
+  },
+  {
+    id: 14,
+    title: "Digital Marketing",
+    description: "Increase your online presence with data-driven marketing strategies and campaigns",
+    icon: "📢",
+    features: ["SEO Optimization", "Social Media", "Content Marketing"]
+  },
+  {
+    id: 15,
+    title: "CRM Solutions",
+    description: "Streamline customer relationships with customized CRM systems and integrations",
+    icon: "👥",
+    features: ["Customer Management", "Sales Pipeline", "Analytics Dashboard"]
+  },
+  {
+    id: 16,
+    title: "API Development",
+    description: "Build robust, scalable APIs that power seamless integrations and data exchange",
+    icon: "🔌",
+    features: ["RESTful APIs", "GraphQL", "API Documentation"]
+  },
+  {
+    id: 17,
+    title: "Database Management",
+    description: "Design, optimize, and maintain databases for peak performance and reliability",
+    icon: "🗄️",
+    features: ["SQL & NoSQL", "Data Modeling", "Performance Tuning"]
+  },
+  {
+    id: 18,
+    title: "Video Streaming",
+    description: "Build scalable video streaming platforms with live and on-demand capabilities",
+    icon: "🎥",
+    features: ["Live Streaming", "VOD", "CDN Integration"]
+  },
+  {
+    id: 19,
+    title: "AR/VR Development",
+    description: "Immersive augmented and virtual reality experiences for training and entertainment",
+    icon: "🥽",
+    features: ["3D Modeling", "Unity Development", "Interactive Experiences"]
+  },
+  {
+    id: 20,
+    title: "Maintenance & Support",
+    description: "24/7 technical support and maintenance to keep your systems running smoothly",
+    icon: "🛠️",
+    features: ["24/7 Support", "Bug Fixes", "System Updates"]
   }
 ];
 
@@ -874,5 +982,759 @@ export const blogPosts: BlogPost[] = [
     category: "Technology",
     date: "June 8, 2022",
     readTime: "11 min read"
+  }
+];
+
+
+
+
+//Contact Us page
+
+export interface Office {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  hours: string;
+  mapUrl: string;
+}
+
+export interface FAQ {
+  id?: number;
+  question: string;
+  answer: string;
+}
+
+// Data
+export const offices: Office[] = [
+  {
+    id: 1,
+    name: "Headquarters - San Francisco",
+    address: "123 Tech Street, Silicon Valley, CA 94025, USA",
+    phone: "+1 (555) 123-4567",
+    email: "sf@techsolutions.com",
+    hours: "Mon - Fri: 9:00 AM - 6:00 PM",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.639290837334!2d-122.08624968469225!3d37.42199997982456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba02425dad8f%3A0x6c296c66619367e0!2sGoogleplex!5e0!3m2!1sen!2sus!4v1619635234567!5m2!1sen!2sus"
+  },
+  {
+    id: 2,
+    name: "Branch Office - New York",
+    address: "456 Innovation Ave, Manhattan, NY 10001, USA",
+    phone: "+1 (555) 987-6543",
+    email: "ny@techsolutions.com",
+    hours: "Mon - Fri: 9:00 AM - 6:00 PM",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98823492346458!3d40.75889713522436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1619635345678!5m2!1sen!2sus"
+  },
+  
+];
+
+export const faqs: FAQ[] = [
+  {
+    id: 1,
+    question: "What services does TechSolutions offer?",
+    answer: "We offer a comprehensive range of IT services including web development, mobile app development, cloud solutions, AI & machine learning, DevOps services, and IT consulting. Our team of experts works closely with clients to deliver customized solutions that meet their specific business needs."
+  },
+  {
+    id: 2,
+    question: "How long does it take to complete a project?",
+    answer: "Project timelines vary depending on the scope and complexity. A simple website might take 4-6 weeks, while a complex enterprise application could take 3-6 months or more. We provide detailed project timelines during our initial consultation and keep you updated throughout the development process."
+  },
+  {
+    id: 3,
+    question: "Do you provide ongoing support after project completion?",
+    answer: "Yes! We offer comprehensive post-launch support and maintenance services. This includes bug fixes, security updates, performance optimization, and feature enhancements. We have flexible support packages to suit different needs and budgets."
+  },
+  {
+    id: 4,
+    question: "What is your pricing model?",
+    answer: "Our pricing is project-based and depends on various factors including project scope, technology stack, timeline, and required resources. We provide transparent, detailed quotes after understanding your requirements. We also offer flexible payment plans for larger projects."
+  },
+  {
+    id: 5,
+    question: "Can you work with our existing technology stack?",
+    answer: "Absolutely! Our team has expertise in a wide range of technologies and frameworks. We can seamlessly integrate with your existing systems or help you modernize your technology stack. We conduct a thorough assessment before starting any project to ensure compatibility."
+  },
+  {
+    id: 6,
+    question: "Do you sign NDAs and protect client confidentiality?",
+    answer: "Yes, we take confidentiality very seriously. We're happy to sign Non-Disclosure Agreements (NDAs) before discussing your project details. All client information and intellectual property are protected under strict confidentiality agreements."
+  },
+  {
+    id: 7,
+    question: "What industries do you specialize in?",
+    answer: "We have experience across multiple industries including e-commerce, healthcare, finance, education, real estate, and entertainment. Our diverse portfolio allows us to bring best practices from various sectors to your project."
+  },
+  {
+    id: 8,
+    question: "How do you ensure project quality?",
+    answer: "We follow industry-standard development practices including code reviews, automated testing, continuous integration/deployment, and quality assurance processes. Each project goes through rigorous testing phases before delivery to ensure it meets our high-quality standards."
+  }
+];
+
+
+
+
+//Careers page 
+// Types
+export interface Job {
+  id: number;
+  title: string;
+  category: string;
+  experience: string;
+  deadline: string;
+  location: string;
+  type: string;
+  description: string;
+}
+
+export interface Benefit {
+  id: number;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+// Dummy Data
+export const jobs: Job[] = [
+  {
+    id: 1,
+    title: "Wordpress Developer",
+    category: "Engineering",
+    experience: "2 Years",
+    deadline: "2021-05-08",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "We're looking for an experienced WordPress developer to join our team."
+  },
+  {
+    id: 2,
+    title: "Javascript Developer",
+    category: "Engineering",
+    experience: "1 Years",
+    deadline: "2021-05-08",
+    location: "Remote",
+    type: "Full-time",
+    description: "Join our frontend team to build amazing web applications."
+  },
+  {
+    id: 3,
+    title: "Apps Developer",
+    category: "Engineering",
+    experience: "3 Years",
+    deadline: "2021-05-08",
+    location: "New York, NY",
+    type: "Full-time",
+    description: "Create innovative mobile applications for iOS and Android."
+  },
+  {
+    id: 4,
+    title: "IOS Developer",
+    category: "Engineering",
+    experience: "2 Years",
+    deadline: "2021-05-08",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "Build cutting-edge iOS applications using Swift and SwiftUI."
+  },
+  {
+    id: 5,
+    title: "Node JS Developer",
+    category: "Engineering",
+    experience: "3 Years",
+    deadline: "2021-05-08",
+    location: "Remote",
+    type: "Full-time",
+    description: "Develop scalable backend services with Node.js and Express."
+  },
+  {
+    id: 6,
+    title: "Senior UI/UX Designer",
+    category: "Design",
+    experience: "4 Years",
+    deadline: "2021-06-15",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "Lead design initiatives and create exceptional user experiences."
+  },
+  {
+    id: 7,
+    title: "Product Designer",
+    category: "Design",
+    experience: "2 Years",
+    deadline: "2021-06-20",
+    location: "Remote",
+    type: "Contract",
+    description: "Design beautiful and intuitive product interfaces."
+  },
+  {
+    id: 8,
+    title: "Digital Marketing Manager",
+    category: "Digital Marketing",
+    experience: "3 Years",
+    deadline: "2021-06-10",
+    location: "New York, NY",
+    type: "Full-time",
+    description: "Drive our digital marketing strategy and campaigns."
+  },
+  {
+    id: 9,
+    title: "SEO Specialist",
+    category: "Digital Marketing",
+    experience: "2 Years",
+    deadline: "2021-06-12",
+    location: "Remote",
+    type: "Part-time",
+    description: "Optimize our web presence and improve search rankings."
+  },
+  {
+    id: 10,
+    title: "Technical Support Engineer",
+    category: "Support",
+    experience: "1 Years",
+    deadline: "2021-06-05",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "Provide technical support to our valued customers."
+  },
+  {
+    id: 11,
+    title: "Customer Success Manager",
+    category: "Support",
+    experience: "2 Years",
+    deadline: "2021-06-18",
+    location: "Remote",
+    type: "Full-time",
+    description: "Ensure customer satisfaction and drive retention."
+  },
+  {
+    id: 12,
+    title: "HR Manager",
+    category: "HT & Admin",
+    experience: "3 Years",
+    deadline: "2021-06-25",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "Manage HR operations and talent acquisition."
+  },
+  {
+    id: 13,
+    title: "DevOps Engineer",
+    category: "Engineering",
+    experience: "3 Years",
+    deadline: "2021-07-01",
+    location: "Remote",
+    type: "Full-time",
+    description: "Build and maintain our cloud infrastructure."
+  },
+  {
+    id: 14,
+    title: "Data Scientist",
+    category: "Engineering",
+    experience: "4 Years",
+    deadline: "2021-07-05",
+    location: "San Francisco, CA",
+    type: "Full-time",
+    description: "Analyze data and build ML models to drive insights."
+  },
+  {
+    id: 15,
+    title: "Content Writer",
+    category: "Digital Marketing",
+    experience: "1 Years",
+    deadline: "2021-07-10",
+    location: "Remote",
+    type: "Contract",
+    description: "Create engaging content for our blog and social media."
+  }
+];
+
+export const benefits: Benefit[] = [
+  {
+    id: 1,
+    icon: <Users size={40} />,
+    title: "Team work",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry."
+  },
+  {
+    id: 2,
+    icon: <Award size={40} />,
+    title: "Secured Future",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry."
+  },
+  {
+    id: 3,
+    icon: <TrendingUp size={40} />,
+    title: "Learning Opportunity",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry."
+  },
+  {
+    id: 4,
+    icon: <Heart size={40} />,
+    title: "Upgrade Skills",
+    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry."
+  }
+];
+
+
+
+//Job Details Page 
+// Types
+export interface JobDetail {
+  id: number;
+  title: string;
+  category: string;
+  experience: string;
+  deadline: string;
+  location: string;
+  type: string;
+  salary: string;
+  workplaceType: string;
+  primaryResponsibility: string;
+  jobSpecifications: string[];
+  employmentType: string;
+  experienceRequired: string;
+  description: string;
+  benefits: string[];
+}
+
+
+// Current Job Data
+export const currentJob: JobDetail = {
+  id: 1,
+  title: "Full Stack Developer",
+  category: "Engineering",
+  experience: "3 Years",
+  deadline: "2025-12-31",
+  location: "Chennai, Madurai, Coimbatore",
+  type: "Full-time",
+  salary: "Commensurate with experience and skills",
+  workplaceType: "Hybrid",
+  primaryResponsibility: `Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases and APIs using technologies such as Node.js, Python, Ruby, or Java.Designing, implementing, and managing databases (SQL or NoSQL) to ensure data integrity and efficient retrieval.Using version control systems like Git to manage code changes and collaborate with other developers.Implementing security best practices to protect applications from vulnerabilities and threats.Automating deployment processes and managing CI/CD pipelines to streamline development and release cycles.Working with cross-functional teams, including designers, product managers, and other developers, to deliver high-quality software.`,
+  jobSpecifications: [
+    "Proficiency in front-end technologies HTML, CSS, JavaScript frameworks like React or Angular.",
+    "Proficiency in back-end technologies Node.js, Python, Ruby, Java, etc.",
+    "Experience in designing and managing databases (SQL and NoSQL)",
+    "Proficiency in schema design and query optimization.",
+    "Strong knowledge of version control systems, particularly Git.",
+    "Expertise in managing and collaborating on code repositories.",
+    "Knowledge of web security best practices.",
+    "Experience with performance optimization techniques.",
+    "Excellent collaboration skills for working effectively in a team environment",
+    "Ability to communicate technical concepts to non-technical stakeholders."
+  ],
+  employmentType: "Full-time",
+  experienceRequired: "Minimum 3 Years",
+  description: "We are looking for a talented Full Stack Developer to join our growing team. You will be responsible for developing and maintaining both front-end and back-end components of our web applications.",
+  benefits: [
+    "Competitive salary package",
+    "Health insurance coverage",
+    "Flexible working hours",
+    "Remote work options",
+    "Professional development opportunities",
+    "Annual performance bonuses",
+    "Collaborative work environment",
+    "Latest technology stack"
+  ]
+};
+
+
+
+//Service Details page 
+// Types
+export interface ServiceDetail {
+  id: number;
+  title: string;
+  icon: string;
+  category: string;
+  description: string;
+  longDescription: string;
+  keyFeatures: string[];
+  benefits: string[];
+  technologies: string[];
+  process: ProcessStep[];
+  pricing: PricingTier[];
+  faqs: FAQ[];
+  caseStudies: CaseStudy[];
+}
+
+export interface ProcessStep {
+  step: number;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+export interface PricingTier {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+}
+
+export interface CaseStudy {
+  title: string;
+  client: string;
+  result: string;
+  image: string;
+}
+
+export interface RelatedService {
+  id: number;
+  title: string;
+  icon: string;
+  description: string;
+}
+
+// Current Service Data
+export const currentService: ServiceDetail = {
+  id: 1,
+  title: "Web Development",
+  icon: "💻",
+  category: "Development",
+  description: "Custom web applications built with modern frameworks and best practices for optimal performance",
+  longDescription: "Our web development services encompass everything from simple landing pages to complex enterprise applications. We leverage cutting-edge technologies and methodologies to create scalable, secure, and high-performing web solutions that drive business growth. Our team of expert developers works closely with you to understand your requirements and deliver solutions that exceed expectations.",
+  keyFeatures: [
+    "Responsive Design - Works seamlessly across all devices",
+    "Performance Optimization - Lightning-fast load times",
+    "SEO-Friendly - Built with search engine optimization in mind",
+    "Scalable Architecture - Grows with your business",
+    "Security First - Industry-standard security practices",
+    "Cross-Browser Compatible - Works on all major browsers",
+    "Progressive Web Apps - App-like experience on web",
+    "API Integration - Connect with third-party services"
+  ],
+  benefits: [
+    "Increased online visibility and reach",
+    "Enhanced user experience and engagement",
+    "Improved conversion rates",
+    "Reduced development costs",
+    "Faster time to market",
+    "Better customer retention"
+  ],
+  technologies: [
+    "React & Next.js",
+    "TypeScript",
+    "Node.js",
+    "Tailwind CSS",
+    "GraphQL",
+    "PostgreSQL",
+    "AWS",
+    "Docker"
+  ],
+  process: [
+    {
+      step: 1,
+      title: "Discovery & Planning",
+      description: "We analyze your requirements, target audience, and business goals to create a comprehensive project roadmap.",
+      icon: <Target size={32} />
+    },
+    {
+      step: 2,
+      title: "Design & Prototyping",
+      description: "Our designers create intuitive wireframes and interactive prototypes for your approval.",
+      icon: <Code size={32} />
+    },
+    {
+      step: 3,
+      title: "Development",
+      description: "Our developers bring designs to life with clean, efficient, and maintainable code.",
+      icon: <Rocket size={32} />
+    },
+    {
+      step: 4,
+      title: "Testing & Launch",
+      description: "Rigorous testing ensures everything works perfectly before we launch your application.",
+      icon: <Star size={32} />
+    }
+  ],
+  pricing: [
+    {
+      name: "Starter",
+      price: "$5,000",
+      description: "Perfect for small businesses",
+      features: [
+        "5-10 pages",
+        "Responsive design",
+        "Basic SEO",
+        "Contact form",
+        "3 months support"
+      ]
+    },
+    {
+      name: "Professional",
+      price: "$15,000",
+      description: "Ideal for growing companies",
+      features: [
+        "15-25 pages",
+        "Advanced features",
+        "Complete SEO",
+        "CMS integration",
+        "6 months support",
+        "Analytics setup"
+      ],
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      description: "For large-scale projects",
+      features: [
+        "Unlimited pages",
+        "Custom features",
+        "Priority support",
+        "Dedicated team",
+        "12 months support",
+        "Performance monitoring"
+      ]
+    }
+  ],
+  faqs: [
+    {
+      question: "How long does it take to build a website?",
+      answer: "The timeline varies based on complexity. A simple website takes 4-6 weeks, while complex applications can take 3-6 months. We provide detailed timelines during the planning phase."
+    },
+    {
+      question: "Do you provide ongoing maintenance?",
+      answer: "Yes! We offer maintenance packages that include updates, security patches, performance monitoring, and technical support to keep your website running smoothly."
+    },
+    {
+      question: "Will my website be mobile-friendly?",
+      answer: "Absolutely! All our websites are fully responsive and optimized for mobile devices, tablets, and desktops to ensure the best user experience across all platforms."
+    },
+    {
+      question: "Can you help with website hosting?",
+      answer: "Yes, we can help you choose and set up the right hosting solution for your needs, whether it's shared hosting, VPS, or cloud infrastructure like AWS or Azure."
+    },
+    {
+      question: "Do you redesign existing websites?",
+      answer: "Certainly! We can modernize your existing website with a fresh design, improved functionality, and better performance while maintaining your brand identity."
+    }
+  ],
+  caseStudies: [
+    {
+      title: "E-Commerce Platform",
+      client: "RetailCo",
+      result: "300% increase in online sales",
+      image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=600&h=400&fit=crop"
+    },
+    {
+      title: "SaaS Dashboard",
+      client: "TechStart",
+      result: "50% reduction in load time",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Corporate Website",
+      client: "GlobalCorp",
+      result: "200% boost in engagement",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop"
+    }
+  ]
+};
+
+// Related Services
+export const relatedServices: RelatedService[] = [
+  {
+    id: 2,
+    title: "Mobile App Development",
+    icon: "📱",
+    description: "Native and cross-platform mobile solutions"
+  },
+  {
+    id: 7,
+    title: "UI/UX Design",
+    icon: "🎨",
+    description: "Beautiful, intuitive interface design"
+  },
+  {
+    id: 3,
+    title: "Cloud Services",
+    icon: "☁️",
+    description: "Scalable cloud infrastructure"
+  },
+  {
+    id: 16,
+    title: "API Development",
+    icon: "🔌",
+    description: "Robust and scalable APIs"
+  }
+];
+
+
+
+//Project Details Page 
+// Types
+export interface ProjectDetail {
+  id: number;
+  title: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  tags: string[];
+  category: string;
+  client: string;
+  date: string;
+  duration: string;
+  gallery: string[];
+  challenge: string;
+  solution: string;
+  results: string[];
+  features: string[];
+  technologies: string[];
+  testimonial?: {
+    text: string;
+    author: string;
+    position: string;
+    avatar: string;
+  };
+}
+
+
+
+// Current Project Data
+export const currentProject: ProjectDetail = {
+  id: 1,
+  title: "AirFlow X - SaaS Website Template",
+  description: "A modern, responsive SaaS website template designed for scalability and performance",
+  longDescription: "AirFlow X is a comprehensive SaaS website template built with cutting-edge technologies and best practices. This template provides a complete solution for SaaS businesses looking to establish a strong online presence. With its modern design, intuitive user experience, and powerful features, AirFlow X helps businesses convert visitors into customers effectively.",
+  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop",
+  tags: ["SaaS", "Webflow", "UI/UX"],
+  category: "Web Design",
+  client: "TechStart Inc.",
+  date: "January 2024",
+  duration: "8 Weeks",
+  gallery: [
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop"
+  ],
+  challenge: "The client needed a website template that could handle rapid growth while maintaining excellent performance and user experience. They required a solution that was both visually appealing and highly functional, with easy customization options for different business needs.",
+  solution: "We developed AirFlow X using modern web technologies with a component-based architecture. The template features a modular design system, allowing for easy customization and scalability. We implemented advanced performance optimization techniques and ensured responsive design across all devices.",
+  results: [
+    "50% improvement in page load speed",
+    "300% increase in user engagement",
+    "95% client satisfaction rate",
+    "40% reduction in bounce rate",
+    "200+ successful implementations"
+  ],
+  features: [
+    "Fully responsive design across all devices",
+    "Dark mode support with smooth transitions",
+    "Advanced animation and micro-interactions",
+    "SEO-optimized structure and content",
+    "Performance-optimized with lazy loading",
+    "Accessible design following WCAG guidelines",
+    "Easy customization with design tokens",
+    "Cross-browser compatibility"
+  ],
+  technologies: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Webflow",
+    "Figma",
+    "Git"
+  ],
+  testimonial: {
+    text: "Working with TechSolutions on AirFlow X was an absolute pleasure. They delivered a product that exceeded our expectations in every way. The attention to detail and commitment to quality is unmatched.",
+    author: "Sarah Johnson",
+    position: "CEO, TechStart Inc.",
+    avatar: "https://i.pravatar.cc/150?img=5"
+  }
+};
+
+// FAQs
+export const faqsForProduct: FAQ[] = [
+  {
+    question: "What is included in this project?",
+    answer: "The project includes complete source files, documentation, design assets, and full support for implementation. You'll receive all components, pages, and resources needed to deploy the solution."
+  },
+  {
+    question: "Can I customize this template?",
+    answer: "Absolutely! The template is built with customization in mind. It uses a modular component structure and design tokens, making it easy to adjust colors, typography, spacing, and layout to match your brand."
+  },
+  {
+    question: "Is this project mobile-responsive?",
+    answer: "Yes, the project is fully responsive and optimized for all device sizes including mobile phones, tablets, and desktop computers. It provides an excellent user experience across all platforms."
+  },
+  {
+    question: "What technologies were used?",
+    answer: "This project was built using modern web technologies including React, Next.js, TypeScript, Tailwind CSS, and Framer Motion. These technologies ensure optimal performance, maintainability, and scalability."
+  },
+  {
+    question: "Do you provide support after delivery?",
+    answer: "Yes, we provide comprehensive post-delivery support including bug fixes, minor updates, and technical assistance for a specified period. Extended support packages are also available."
+  },
+  {
+    question: "Can I see a live demo?",
+    answer: "Yes, a live demo is available. Contact us to request access to the demo environment where you can explore all features and functionality in detail."
+  }
+];
+
+
+//Video testimonial
+// Types
+export interface VideoTestimonial {
+  id: number;
+  clientName: string;
+  clientPosition: string;
+  clientCompany: string;
+  clientImage: string;
+  videoUrl: string;
+  thumbnail: string;
+  description: string;
+  rating: number;
+}
+
+// Dummy Video Testimonials Data
+export const videoTestimonials: VideoTestimonial[] = [
+  {
+    id: 1,
+    clientName: "Pall",
+    clientPosition: "CEO",
+    clientCompany: "TechVision Inc",
+    clientImage: "https://i.pravatar.cc/150?img=12", 
+    videoUrl: "/video.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=600&fit=crop",
+    description: "Working with TechSolutions has been transformative for our business. Their expertise in web development and cloud solutions helped us scale our operations efficiently. The team's dedication and innovative approach exceeded all our expectations.",
+    rating: 5
+  },
+  {
+    id: 2,
+    clientName: "Michael Chen",
+    clientPosition: "CTO",
+    clientCompany: "InnovateCorp",
+    clientImage: "https://i.pravatar.cc/150?img=5",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop",
+    description: "The mobile app they developed for us is outstanding! Not only did they deliver on time, but the quality of work and attention to detail was exceptional. Our user engagement increased by 300% within the first month of launch.",
+    rating: 5
+  },
+  {
+    id: 3,
+    clientName: "Emily Rodriguez",
+    clientPosition: "Product Manager",
+    clientCompany: "DataFlow Systems",
+    clientImage: "https://i.pravatar.cc/150?img=9",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&h=600&fit=crop",
+    description: "TechSolutions provided us with a comprehensive data analytics platform that revolutionized how we make business decisions. Their team understood our complex requirements and delivered a solution that perfectly fits our needs.",
+    rating: 5
+  },
+  {
+    id: 4,
+    clientName: "David Park",
+    clientPosition: "Founder",
+    clientCompany: "StartupHub",
+    clientImage: "https://i.pravatar.cc/150?img=13",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=600&fit=crop",
+    description: "As a startup, we needed a reliable technology partner who could grow with us. TechSolutions not only built our platform but also provided invaluable consulting that helped shape our product strategy. Highly recommend!",
+    rating: 5
   }
 ];

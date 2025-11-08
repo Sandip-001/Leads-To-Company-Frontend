@@ -1,22 +1,33 @@
-"use client"
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ExternalLink, Filter } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { allProjects } from '@/services/Constants';
+"use client";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ExternalLink, Filter } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { allProjects } from "@/services/Constants";
+import { useRouter } from "next/navigation";
+import { slugify } from "@/lib/slugify";
 
 const PortfolioGrid: React.FC = () => {
   const [visibleCount, setVisibleCount] = useState<number>(10);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const categories = ["All", "Web Design", "Web Application", "Mobile App"]
+  const router = useRouter();
 
-  const filteredProjects = selectedCategory === "All" 
-    ? allProjects
-    : allProjects.filter(project => project.category === selectedCategory);
+  const categories = ["All", "Web Design", "Web Application", "Mobile App"];
+
+  const filteredProjects =
+    selectedCategory === "All"
+      ? allProjects
+      : allProjects.filter((project) => project.category === selectedCategory);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
   const hasMore = visibleCount < filteredProjects.length;
@@ -24,7 +35,7 @@ const PortfolioGrid: React.FC = () => {
   const handleLoadMore = () => {
     setIsLoading(true);
     setTimeout(() => {
-      setVisibleCount(prev => prev + 10);
+      setVisibleCount((prev) => prev + 10);
       setIsLoading(false);
     }, 500);
   };
@@ -55,8 +66,8 @@ const PortfolioGrid: React.FC = () => {
               onClick={() => handleCategoryChange(category)}
               className={`px-6 py-2 rounded-full font-medium transition-all ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-blue-50 border border-gray-200'
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200"
               }`}
             >
               {category}
@@ -94,6 +105,9 @@ const PortfolioGrid: React.FC = () => {
                       <Button
                         size="lg"
                         className="bg-white text-blue-600 hover:bg-blue-50 font-semibold gap-2 shadow-xl"
+                        onClick={() =>
+                          router.push(`/portfolio/${slugify(project.title)}`)
+                        }
                       >
                         <ExternalLink size={20} />
                         View Project
@@ -125,6 +139,9 @@ const PortfolioGrid: React.FC = () => {
                     <Button
                       variant="ghost"
                       className="w-full justify-between group/btn hover:bg-blue-50 hover:text-blue-600 font-semibold"
+                      onClick={() =>
+                        router.push(`/portfolio/${slugify(project.title)}`)
+                      }
                     >
                       View project
                       <ArrowRight
@@ -173,7 +190,8 @@ const PortfolioGrid: React.FC = () => {
             className="text-center mt-8"
           >
             <p className="text-gray-600 text-lg font-medium">
-              🎉 You've viewed all {filteredProjects.length} projects in this category!
+              🎉 You've viewed all {filteredProjects.length} projects in this
+              category!
             </p>
           </motion.div>
         )}
@@ -182,4 +200,4 @@ const PortfolioGrid: React.FC = () => {
   );
 };
 
-export default PortfolioGrid
+export default PortfolioGrid;

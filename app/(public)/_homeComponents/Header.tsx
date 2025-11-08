@@ -1,10 +1,10 @@
-// Header Component
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation"; // ✅ import this
 
 interface MenuItem {
   label: string;
@@ -14,12 +14,10 @@ interface MenuItem {
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState<string>("/"); // 👈 store current active path
+  const pathname = usePathname(); // ✅ get current path
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -61,27 +59,26 @@ const Header: React.FC = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {menuItems.map((item, index) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setActiveLink(item.href)} // 👈 update active state
-              >
-                <motion.span
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.1, color: "#2563eb" }}
-                  className={`relative text-gray-700 hover:text-blue-600 font-medium transition-colors cursor-pointer ${
-                    activeLink === item.href
-                      ? "text-blue-500 font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600"
-                      : ""
-                  }`}
-                >
-                  {item.label}
-                </motion.span>
-              </Link>
-            ))}
+            {menuItems.map((item, index) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link key={item.href} href={item.href}>
+                  <motion.span
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.1 }}
+                    className={`relative text-gray-700 font-medium transition-colors cursor-pointer ${
+                      isActive
+                        ? "text-blue-600 font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600"
+                        : "hover:text-blue-600"
+                    }`}
+                  >
+                    {item.label}
+                  </motion.span>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Mobile Toggle */}
@@ -105,29 +102,29 @@ const Header: React.FC = () => {
             className="lg:hidden bg-white border-t"
           >
             <div className="container mx-auto px-4 py-4">
-              {menuItems.map((item, index) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => {
-                    setActiveLink(item.href);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  <motion.span
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`block py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors cursor-pointer ${
-                      activeLink === item.href
-                        ? "text-blue-600 font-semibold"
-                        : ""
-                    }`}
+              {menuItems.map((item, index) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.label}
-                  </motion.span>
-                </Link>
-              ))}
+                    <motion.span
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className={`block py-3 text-gray-700 font-medium transition-colors cursor-pointer ${
+                        isActive
+                          ? "text-blue-600 font-semibold"
+                          : "hover:text-blue-600"
+                      }`}
+                    >
+                      {item.label}
+                    </motion.span>
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}
